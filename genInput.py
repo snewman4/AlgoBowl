@@ -5,7 +5,7 @@ import os
 
 
 def genInput(numVars, numClauses):
-    #os.remove("input.txt")
+    os.remove("input.txt")
     file = open("input.txt", "a")
 
     file.write(str(numVars) + " " + str(numClauses) + "\n")
@@ -23,4 +23,4 @@ def genInput(numVars, numClauses):
 
     file.close()
 
-genInput(numVars=2, numClauses=10)
+genInput(numVars=2, numClauses=100)
