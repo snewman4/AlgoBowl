@@ -24,4 +24,4 @@ def genInput(numVars, numClauses):
 
     file.close()
 
-genInput(numVars=2, numClauses=10)
+genInput(numVars=500, numClauses=50000)
