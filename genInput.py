@@ -7,7 +7,7 @@ def genInput(numVars, numClauses):
     file = open("input.txt", "w")
 
     # Writes meta information
-    file.write(str(numVars) + " " + str(numClauses) + "\n")
+    file.write(str(numClauses) + " " + str(numVars) + "\n")
 
     for i in range(numClauses):
         # Can be positive or negative
