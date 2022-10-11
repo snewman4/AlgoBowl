@@ -1,7 +1,7 @@
 # Team Merge Conflicts Algobowl Solution Algorithm
 
 # name of file to read
-fileName = ''
+fileName = 'input.txt'
 
 # get file
 inFile = open(fileName)
@@ -20,21 +20,24 @@ arr = [0] * numVars
 currLine = [int(x) for x in inFile.readline().split()]
 counter = 1
 trueCount = 0
-while currLine
+while currLine:
     # get 2 vals in line
     num1 = currLine[0]
     num2 = currLine[1]
 
     # adds -1 if num is negative, 1 if positive
-    arr[abs(num1)] += (num1)/(num1)
-    arr[abs(num2)] += (num2)/(num2)
+    arr[abs(num1)] += (num1)/abs(num1)
+    arr[abs(num2)] += (num2)/abs(num2)
 
+
+    # MOVE THIS INTO ANOTHER LOOP, AS IT CURRENTLY DOES NOT ACCOUNT FOR VARIABLES UPDATING
     if (num1 > 0 and num2 > 0) or (num1 > 0) or (num2 > 0) :
         trueCount +=1
+    # THROUGH HERE
 
     currLine = [int(x) for x in inFile.readline().split()]
 
-fileIn.close()   
+inFile.close()   
 
 # write true count and array of solutions to output file
 # if arr[index] > 0, write 1, if <0, write 0
