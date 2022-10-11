@@ -13,7 +13,7 @@ def parseOutput(filename):
 			distribution[-1].append(int(num)) 
 	return (expectedPerformance, distribution)
 
-def isDupes(distribution):
+def isDuplicate(distribution):
 	seen = []
 	for line in distribution:
 		for item in line:
