@@ -48,7 +48,7 @@ def isValidOutputFile(infilename, outfilename):
 	if(isMissingTasks(distribution, tasks)):
 		print("output is missing tasks")
 		return False
-	if(isDupes(distribution)):
+	if(isDuplicate(distribution)):
 		print("output has a duplicate task")
 		return False
 	return True
