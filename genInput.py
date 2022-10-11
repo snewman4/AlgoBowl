@@ -4,7 +4,7 @@ from random import randrange
 
 
 def genInput(numVars, numClauses):
-    file = open("input.txt", "w")
+    file = open("testInput.txt", "w")
 
     # Writes meta information
     file.write(str(numClauses) + " " + str(numVars) + "\n")
@@ -24,4 +24,4 @@ def genInput(numVars, numClauses):
 
     file.close()
 
-genInput(numVars=500, numClauses=50000)
+genInput(numVars=2, numClauses=20)

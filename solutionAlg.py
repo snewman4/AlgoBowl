@@ -1,7 +1,7 @@
 # Team Merge Conflicts Algobowl Solution Algorithm
 
 # name of file to read
-fileName = 'input.txt'
+fileName = 'testInput.txt'
 
 # get file
 inFile = open(fileName)
@@ -13,37 +13,57 @@ numVars = firstLine[1]
 
 # array of numbers for vars, all start at 0
 arr = [0] * numVars
-# if number read in is negative, subtract one at index=num
-# if number read in is positive, add one at index=num
+# if number read in is negative, subtract one at index=abs(num)
+# if number read in is positive, add one at index=abs(num)
+# if even number of positive and negative at the end, default to false
 
-# loop, if number in array is negative, make it false, if positive, make it true
+# first loop determines if each variable is more positive or negative
 currLine = [int(x) for x in inFile.readline().split()]
-counter = 1
-trueCount = 0
 while currLine:
     # get 2 vals in line
     num1 = currLine[0]
     num2 = currLine[1]
 
+    if (num1 == 0) or (num2 == 0):
+        print("Variable 0 detected")
+        break
+
     # adds -1 if num is negative, 1 if positive
-    arr[abs(num1)] += (num1)/abs(num1)
-    arr[abs(num2)] += (num2)/abs(num2)
-
-
-    # MOVE THIS INTO ANOTHER LOOP, AS IT CURRENTLY DOES NOT ACCOUNT FOR VARIABLES UPDATING
-    if (num1 > 0 and num2 > 0) or (num1 > 0) or (num2 > 0) :
-        trueCount +=1
-    # THROUGH HERE
+    arr[abs(num1) - 1] += (num1)/abs(num1)
+    arr[abs(num2) - 1] += (num2)/abs(num2)
 
     currLine = [int(x) for x in inFile.readline().split()]
 
-inFile.close()   
+inFile.close()
+
+# Read the file a second time, this time counting True clauses
+inFile = open(fileName)
+inFile.readline() # Get rid of first line
+currLine = [int(x) for x in inFile.readline().split()]
+trueCount = 0
+while currLine:
+    num1 = currLine[0]
+    num2 = currLine[1]
+    num1Val = arr[abs(num1) - 1]
+    num2Val = arr[abs(num2) - 1]
+
+    # Check the following four possibilities for this to be true:
+    # 1. num1Val is True and num1 is not negated
+    # 2. num1Val is False and num1 is negated
+    # 3. num2Val is True and num2 is not negated
+    # 4. num2Val is False and num2 is negated
+    if (num1Val > 0 and num1 > 0) or (num1Val <= 0 and num1 < 0) or (num2Val > 0 and num2 > 0) or (num2Val <= 0 and num2 < 0):
+        trueCount += 1
+
+    currLine = [int(x) for x in inFile.readline().split()]
+
+inFile.close()
 
 # write true count and array of solutions to output file
-# if arr[index] > 0, write 1, if <0, write 0
-
-fileOut = open("output.txt", "x")
-fileOut.write(trueCount+'\n')
+# if arr[index] > 0, write 1, if <= 0, write 0
+# note that if there are an even amount of pos and neg, it defaults to false
+fileOut = open("output.txt", "w")
+fileOut.write(str(trueCount) + '\n')
 for x in arr:
     if x <= 0:
         fileOut.write("0\n")
