@@ -1,7 +1,7 @@
 # Team Merge Conflicts Algobowl Solution Algorithm
 
 # name of file to read
-fileName = 'testInput.txt'
+fileName = 'input.txt'
 
 # get file
 inFile = open(fileName)
