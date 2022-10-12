@@ -1,10 +1,11 @@
 # Team Merge Conflicts Algobowl Solution Algorithm
 
 # name of file to read
-fileName = 'input.txt'
+inputFileName = "input_group410.txt"
+inputFilePath = "allInputs\\" + inputFileName
 
 # get file
-inFile = open(fileName)
+inFile = open(inputFilePath)
 
 # read first line to get size (of file) and num vars
 firstLine = [int(x) for x in inFile.readline().split()]
@@ -37,7 +38,7 @@ while currLine:
 inFile.close()
 
 # Read the file a second time, this time counting True clauses
-inFile = open(fileName)
+inFile = open(inputFilePath)
 inFile.readline() # Get rid of first line
 currLine = [int(x) for x in inFile.readline().split()]
 trueCount = 0
@@ -62,7 +63,9 @@ inFile.close()
 # write true count and array of solutions to output file
 # if arr[index] > 0, write 1, if <= 0, write 0
 # note that if there are an even amount of pos and neg, it defaults to false
-fileOut = open("output.txt", "w")
+outputFileName = "output" + inputFileName[11:14] + ".txt"
+outputFilePath = "allOutputs\\" + outputFileName
+fileOut = open(outputFilePath, "w")
 fileOut.write(str(trueCount) + '\n')
 for x in arr:
     if x <= 0:
