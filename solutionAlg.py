@@ -1,7 +1,7 @@
 # Team Merge Conflicts Algobowl Solution Algorithm
 
 # name of file to read
-inputFileName = "input_group410.txt"
+inputFileName = "input_group463.txt"
 inputFilePath = "allInputs\\" + inputFileName
 
 # get file
